@@ -1,0 +1,111 @@
+---
+title: "Untitled"
+output: word_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+
+library(ggplot2)
+library(dplyr)
+```
+
+```{r pressure, echo=FALSE}
+m = 800
+sd = 100
+n = 30
+nS = 30
+
+T = data.frame(rn = rnorm(n, m, sd))
+Ts = data.frame(rn = rnorm(nS, m, sd))
+
+mEva = mean(T$rn)
+sdEva = sd(T$rn)
+msEva = mean(Ts$rn)
+sdsEva = sd(Ts$rn)
+
+fullDm = sdEva/n
+fullDsd = (2*sdEva^2)/n
+
+leftDm = fullDm
+leftDsd = (2*sdEva^2)/n + count((T-m)^2)/sd^6
+
+plot(density(T$rn), col = "red", lwd=2)
+
+msEva
+fullDsd
+
+ns=60
+
+T = data.frame(rn = rnorm(n, m, sd))
+Ts = data.frame(rn = rnorm(nS, m, sd))
+
+mEva = mean(T$rn)
+sdEva = sd(T$rn)
+msEva = mean(Ts$rn)
+sdsEva = sd(Ts$rn)
+
+fullDm = sdEva/n
+fullDsd = (2*sdEva^2)/n
+fullDms = sdsEva/n
+fullDsds = (2*sdsEva^2)/n
+
+leftDm = fullDm
+leftDsd = (2*sdEva^2)/n + count((T-m)^2)/sd^6
+leftDms = fullDms
+leftDsds = (2*sdsEva^2)/n + count((T-m)^2)/sd^6
+
+lines(density(T$rn), col = "blue", lwd=2)
+
+msEva
+leftDsd
+
+ns=90
+
+T = data.frame(rn = rnorm(n, m, sd))
+Ts = data.frame(rn = rnorm(nS, m, sd))
+
+mEva = mean(T$rn)
+sdEva = sd(T$rn)
+msEva = mean(Ts$rn)
+sdsEva = sd(Ts$rn)
+
+fullDm = sdEva/n
+fullDsd = (2*sdEva^2)/n
+fullDms = sdsEva/n
+fullDsds = (2*sdsEva^2)/n
+
+leftDm = fullDm
+leftDsd = (2*sdEva^2)/n + count((T-m)^2)/sd^6
+leftDms = fullDms
+leftDsds = (2*sdsEva^2)/n + count((T-m)^2)/sd^6
+
+lines(density(T$rn), col = "green", lwd=2)
+
+msEva
+leftDsd
+
+ns=120
+
+T = data.frame(rn = rnorm(n, m, sd))
+Ts = data.frame(rn = rnorm(nS, m, sd))
+
+mEva = mean(T$rn)
+sdEva = sd(T$rn)
+msEva = mean(Ts$rn)
+sdsEva = sd(Ts$rn)
+
+fullDm = sdEva/n
+leftDsd = (2*sdEva^2)/n
+
+leftDm = fullDm
+leftDsd = (2*sdEva^2)/n + count((T-m)^2)/sd^6
+
+
+lines(density(T$rn), col = "cyan", lwd=2)
+
+msEva
+leftDsd
+```
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
